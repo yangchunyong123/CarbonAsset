@@ -47,6 +47,8 @@ def menus_view(request):
         return ok(
             [
                 {"name": "仪表盘", "path": "/dashboard", "component": "DashboardView"},
+                {"name": "能碳总览", "path": "/calc/overview", "component": "CalcOverviewView"},
+                {"name": "用电分析", "path": "/analysis/power", "component": "PowerAnalysisView"},
                 {"name": "燃料品种", "path": "/master/fuels", "component": "FuelTypeView"},
                 {"name": "生产用料", "path": "/master/materials", "component": "MaterialView"},
                 {"name": "核算配置", "path": "/calc/templates", "component": "CalcTemplateView"},
