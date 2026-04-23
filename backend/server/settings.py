@@ -52,20 +52,18 @@ TEMPLATES = [
     },
 ]
 WSGI_APPLICATION = "server.wsgi.application"
-if os.getenv("USE_SQLITE", "true").lower() == "true":
-    DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": BASE_DIR / "db.sqlite3"}}
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": os.getenv("MYSQL_DB", "carbon_assets_v2"),
-            "USER": os.getenv("MYSQL_USER", "root"),
-            "PASSWORD": os.getenv("MYSQL_PASSWORD", "root"),
-            "HOST": os.getenv("MYSQL_HOST", "127.0.0.1"),
-            "PORT": os.getenv("MYSQL_PORT", "3306"),
-            "OPTIONS": {"charset": "utf8mb4"},
-        }
-    }
+# Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'carbon_asset',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
+        # 'HOST': '172.25.0.114',
+        'PORT': '33061',  # 留空或设置为 SQL Server 的端口号，如果默认端口可留空
+    },
+}
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
