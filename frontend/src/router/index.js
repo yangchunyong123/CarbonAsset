@@ -39,8 +39,8 @@ const router = createRouter({
  * Guard routes and redirect unauthenticated users to login page.
  */
 router.beforeEach((to) => {
-  const store = useAuthStore();
   if (to.meta.public) return true;
+  const store = useAuthStore();
   if (!store.accessToken) return "/login";
   return true;
 });
