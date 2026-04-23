@@ -37,6 +37,7 @@
               :prefix-icon="Lock"
               show-password
               class="custom-input"
+              @keyup.enter="onLogin"
             />
           </el-form-item>
 
