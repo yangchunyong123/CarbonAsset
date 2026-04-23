@@ -71,17 +71,32 @@ const form = reactive({ username: "admin", password: "123456" });
  */
 async function onLogin() {
   if (!form.username || !form.password) {
-    ElMessage.warning("请输入用户名和密码");
+    ElMessage({
+      message: "请输入用户名和密码",
+      type: "warning",
+      plain: true,
+      duration: 3000,
+    });
     return;
   }
   
   loading.value = true;
   try {
     await auth.login(form);
-    ElMessage.success("登录成功");
+    ElMessage({
+      message: "登录成功",
+      type: "success",
+      plain: true,
+      duration: 2000,
+    });
     router.push("/dashboard");
   } catch (error) {
-    ElMessage.error("登录失败，请检查用户名或密码");
+    ElMessage({
+      message: "登录失败，请检查用户名或密码是否正确",
+      type: "error",
+      plain: true,
+      duration: 3000,
+    });
   } finally {
     loading.value = false;
   }
