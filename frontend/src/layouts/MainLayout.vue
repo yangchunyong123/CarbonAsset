@@ -3,7 +3,9 @@
     <el-aside width="220px" style="background: #001529; color: #fff">
       <div style="padding: 16px; font-weight: 700">碳资产管理系统V2</div>
       <el-menu :default-active="activePath" router background-color="#001529" text-color="#fff">
-        <el-menu-item index="/dashboard">仪表盘</el-menu-item>
+        <el-menu-item index="/dashboard">碳画像总览</el-menu-item>
+        <el-menu-item index="/calc/overview">能碳总览</el-menu-item>
+        <el-menu-item index="/analysis/power">用电分析</el-menu-item>
         <el-menu-item index="/master/fuels">燃料品种管理</el-menu-item>
         <el-menu-item index="/master/materials">生产用料管理</el-menu-item>
         <el-menu-item index="/calc/templates">核算配置</el-menu-item>
