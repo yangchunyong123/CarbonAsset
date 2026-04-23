@@ -37,7 +37,7 @@
 
 <script setup>
 import { computed, reactive, ref, watch } from "vue";
-import { ElMessage, ElMessageBox } from "element-plus";
+import { ElNotification, ElMessageBox } from "element-plus";
 import request from "../utils/request";
 
 const props = defineProps({
@@ -90,10 +90,10 @@ function openEdit(row) {
 async function save() {
   if (editingId.value) {
     await request.put(`${props.endpoint}/${editingId.value}/`, form);
-    ElMessage.success("更新成功");
+    ElNotification({ title: "成功", message: "更新成功", type: "success" });
   } else {
     await request.post(`${props.endpoint}/`, form);
-    ElMessage.success("新增成功");
+    ElNotification({ title: "成功", message: "新增成功", type: "success" });
   }
   visible.value = false;
   await loadData();
@@ -105,7 +105,7 @@ async function save() {
 async function removeRow(id) {
   await ElMessageBox.confirm("确认删除该记录？", "提示", { type: "warning" });
   await request.delete(`${props.endpoint}/${id}/`);
-  ElMessage.success("删除成功");
+  ElNotification({ title: "成功", message: "删除成功", type: "success" });
   await loadData();
 }
 

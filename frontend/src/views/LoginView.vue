@@ -56,7 +56,7 @@
 
 <script setup>
 import { reactive, ref } from "vue";
-import { ElMessage } from "element-plus";
+import { ElNotification } from "element-plus";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../stores/auth";
 import { User, Lock } from "@element-plus/icons-vue";
@@ -71,10 +71,10 @@ const form = reactive({ username: "admin", password: "123456" });
  */
 async function onLogin() {
   if (!form.username || !form.password) {
-    ElMessage({
+    ElNotification({
+      title: "提示",
       message: "请输入用户名和密码",
       type: "warning",
-      plain: true,
       duration: 3000,
     });
     return;
@@ -83,18 +83,18 @@ async function onLogin() {
   loading.value = true;
   try {
     await auth.login(form);
-    ElMessage({
+    ElNotification({
+      title: "成功",
       message: "登录成功",
       type: "success",
-      plain: true,
       duration: 2000,
     });
     router.push("/dashboard");
   } catch (error) {
-    ElMessage({
+    ElNotification({
+      title: "错误",
       message: "登录失败，请检查用户名或密码是否正确",
       type: "error",
-      plain: true,
       duration: 3000,
     });
   } finally {

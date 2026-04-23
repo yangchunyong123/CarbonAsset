@@ -10,7 +10,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { ElMessage } from "element-plus";
+import { ElNotification } from "element-plus";
 import request from "../utils/request";
 import CrudPage from "../components/CrudPage.vue";
 
@@ -27,10 +27,10 @@ const columns = [
  */
 async function runCalc() {
   if (!entryId.value) {
-    ElMessage.warning("请先输入填报ID");
+    ElNotification({ title: "提示", message: "请先输入填报ID", type: "warning" });
     return;
   }
   await request.post("/calculation/tasks/run/", { entry_id: Number(entryId.value) });
-  ElMessage.success("计算任务执行完成");
+  ElNotification({ title: "成功", message: "计算任务执行完成", type: "success" });
 }
 </script>
